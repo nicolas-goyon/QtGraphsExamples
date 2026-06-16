@@ -5,7 +5,7 @@ import QtGraphsExamples
 
 Item {
 
-    LineChartDataProvider { id: dataProvider }
+    LineChartBasicDataProvider { id: dataProvider }
 
     ColumnLayout {
         anchors.fill: parent
@@ -31,25 +31,20 @@ Item {
             axisY: ValueAxis { min: -5; max: 40; tickInterval: 5; labelFormat: "%g °C" }
 
             LineSeries {
-                id: londonSeries
                 name: "London"
                 Component.onCompleted: {
                     var pts = dataProvider.londonData()
                     for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
                 }
             }
-
             LineSeries {
-                id: madridSeries
                 name: "Madrid"
                 Component.onCompleted: {
                     var pts = dataProvider.madridData()
                     for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
                 }
             }
-
             LineSeries {
-                id: helsinkiSeries
                 name: "Helsinki"
                 Component.onCompleted: {
                     var pts = dataProvider.helsinkiData()
@@ -57,5 +52,7 @@ Item {
                 }
             }
         }
+
+        LineChartBasicDescription {}
     }
 }

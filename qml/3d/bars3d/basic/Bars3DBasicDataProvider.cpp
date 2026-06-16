@@ -1,6 +1,6 @@
-#include "Bars3DDataProvider.h"
+#include "Bars3DBasicDataProvider.h"
 
-Bars3DDataProvider::Bars3DDataProvider(QObject *parent)
+Bars3DBasicDataProvider::Bars3DBasicDataProvider(QObject *parent)
     : QAbstractListModel(parent)
 {
     m_data = {
@@ -23,13 +23,13 @@ Bars3DDataProvider::Bars3DDataProvider(QObject *parent)
     };
 }
 
-int Bars3DDataProvider::rowCount(const QModelIndex &parent) const
+int Bars3DBasicDataProvider::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid()) return 0;
     return static_cast<int>(m_data.size());
 }
 
-QVariant Bars3DDataProvider::data(const QModelIndex &index, int role) const
+QVariant Bars3DBasicDataProvider::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid() || index.row() >= static_cast<int>(m_data.size()))
         return {};
@@ -42,7 +42,7 @@ QVariant Bars3DDataProvider::data(const QModelIndex &index, int role) const
     }
 }
 
-QHash<int, QByteArray> Bars3DDataProvider::roleNames() const
+QHash<int, QByteArray> Bars3DBasicDataProvider::roleNames() const
 {
     return {
         {RowRole,   QByteArrayLiteral("row")},

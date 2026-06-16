@@ -5,7 +5,7 @@ import QtGraphsExamples
 
 Item {
 
-    ScatterChartDataProvider { id: dataProvider }
+    ScatterChartBasicDataProvider { id: dataProvider }
 
     ColumnLayout {
         anchors.fill: parent
@@ -22,36 +22,38 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            theme: GraphsTheme {
-                colorScheme: GraphsTheme.ColorScheme.Dark
-            }
+            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
             axisX: ValueAxis { min: 140; max: 210; tickInterval: 10; labelFormat: "%g cm" }
             axisY: ValueAxis { min: 40;  max: 130; tickInterval: 10; labelFormat: "%g kg" }
 
             ScatterSeries {
                 name: "Group A"
+                color: "#0051ff"
                 Component.onCompleted: {
                     var pts = dataProvider.groupAData()
                     for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
                 }
             }
-
             ScatterSeries {
                 name: "Group B"
+                color: "#ff0015"
                 Component.onCompleted: {
                     var pts = dataProvider.groupBData()
                     for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
                 }
             }
-
             ScatterSeries {
                 name: "Group C"
+                color: "#00ff00"
                 Component.onCompleted: {
                     var pts = dataProvider.groupCData()
                     for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
                 }
+
             }
         }
+
+        ScatterChartBasicDescription {}
     }
 }

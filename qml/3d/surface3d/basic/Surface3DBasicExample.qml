@@ -17,13 +17,10 @@ Item {
         }
 
         Surface3D {
-            id: surfaceGraph
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            theme: GraphsTheme {
-                colorScheme: GraphsTheme.ColorScheme.Dark
-            }
+            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
             cameraXRotation: -45
             cameraYRotation: 30
@@ -37,7 +34,7 @@ Item {
                 baseColor: "#89b4fa"
 
                 ItemModelSurfaceDataProxy {
-                    itemModel:  Surface3DDataProvider {}
+                    itemModel:  Surface3DBasicDataProvider {}
                     rowRole:    "z"
                     columnRole: "x"
                     xPosRole:   "x"
@@ -46,5 +43,7 @@ Item {
                 }
             }
         }
+
+        Surface3DBasicDescription {}
     }
 }

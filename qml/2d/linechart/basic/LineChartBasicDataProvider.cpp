@@ -1,9 +1,9 @@
-#include "LineChartDataProvider.h"
+#include "LineChartBasicDataProvider.h"
 #include <QVariantMap>
 
-LineChartDataProvider::LineChartDataProvider(QObject *parent) : QObject(parent) {}
+LineChartBasicDataProvider::LineChartBasicDataProvider(QObject *parent) : QObject(parent) {}
 
-QVariantList LineChartDataProvider::makePoints(
+QVariantList LineChartBasicDataProvider::makePoints(
     std::initializer_list<std::pair<double, double>> pts)
 {
     QVariantList result;
@@ -17,7 +17,7 @@ QVariantList LineChartDataProvider::makePoints(
     return result;
 }
 
-QVariantList LineChartDataProvider::londonData() const
+QVariantList LineChartBasicDataProvider::londonData() const
 {
     return makePoints({
         {0,5.0},{1,5.5},{2,7.5},{3,10.0},{4,13.5},{5,16.5},
@@ -25,7 +25,7 @@ QVariantList LineChartDataProvider::londonData() const
     });
 }
 
-QVariantList LineChartDataProvider::madridData() const
+QVariantList LineChartBasicDataProvider::madridData() const
 {
     return makePoints({
         {0,9.0},{1,10.5},{2,13.5},{3,15.5},{4,19.0},{5,24.0},
@@ -33,7 +33,7 @@ QVariantList LineChartDataProvider::madridData() const
     });
 }
 
-QVariantList LineChartDataProvider::helsinkiData() const
+QVariantList LineChartBasicDataProvider::helsinkiData() const
 {
     return makePoints({
         {0,-3.5},{1,-4.5},{2,-1.5},{3,3.5},{4,9.5},{5,14.5},

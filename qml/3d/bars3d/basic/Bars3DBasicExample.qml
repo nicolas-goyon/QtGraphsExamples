@@ -20,9 +20,7 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            theme: GraphsTheme {
-                colorScheme: GraphsTheme.ColorScheme.Dark
-            }
+            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
             lightStrength:        10
             ambientLightStrength: 0
             shadowQuality:        Graphs3D.ShadowQuality.Medium
@@ -39,12 +37,14 @@ Item {
                 baseColor: "#2072fb"
 
                 ItemModelBarDataProxy {
-                    itemModel:  Bars3DDataProvider {}
+                    itemModel:  Bars3DBasicDataProvider {}
                     rowRole:    "row"
                     columnRole: "col"
                     valueRole:  "value"
                 }
             }
         }
+
+        Bars3DBasicDescription {}
     }
 }

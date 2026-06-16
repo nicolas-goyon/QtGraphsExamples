@@ -1,9 +1,9 @@
-#include "ScatterChartDataProvider.h"
+#include "ScatterChartBasicDataProvider.h"
 #include <QVariantMap>
 
-ScatterChartDataProvider::ScatterChartDataProvider(QObject *parent) : QObject(parent) {}
+ScatterChartBasicDataProvider::ScatterChartBasicDataProvider(QObject *parent) : QObject(parent) {}
 
-QVariantList ScatterChartDataProvider::makePoints(
+QVariantList ScatterChartBasicDataProvider::makePoints(
     std::initializer_list<std::pair<double, double>> pts)
 {
     QVariantList result;
@@ -17,7 +17,7 @@ QVariantList ScatterChartDataProvider::makePoints(
     return result;
 }
 
-QVariantList ScatterChartDataProvider::groupAData() const
+QVariantList ScatterChartBasicDataProvider::groupAData() const
 {
     return makePoints({
         {158,55},{162,58},{165,61},{168,63},
@@ -25,7 +25,7 @@ QVariantList ScatterChartDataProvider::groupAData() const
     });
 }
 
-QVariantList ScatterChartDataProvider::groupBData() const
+QVariantList ScatterChartBasicDataProvider::groupBData() const
 {
     return makePoints({
         {175,75},{180,80},{185,85},{178,78},
@@ -33,7 +33,7 @@ QVariantList ScatterChartDataProvider::groupBData() const
     });
 }
 
-QVariantList ScatterChartDataProvider::groupCData() const
+QVariantList ScatterChartBasicDataProvider::groupCData() const
 {
     return makePoints({
         {192,100},{195,105},{200,110},{188,95},

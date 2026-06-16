@@ -5,7 +5,7 @@ import QtGraphsExamples
 
 Item {
 
-    BarChartDataProvider { id: dataProvider }
+    BarChartBasicDataProvider { id: dataProvider }
 
     ColumnLayout {
         anchors.fill: parent
@@ -22,9 +22,7 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            theme: GraphsTheme {
-                colorScheme: GraphsTheme.ColorScheme.Dark
-            }
+            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
             axisY: ValueAxis { min: 0; max: 120; tickInterval: 20; labelFormat: "$%g M" }
 
@@ -32,7 +30,6 @@ Item {
                 axisX: BarCategoryAxis {
                     Component.onCompleted: categories = dataProvider.categories()
                 }
-
                 BarSet {
                     label: "Product A"
                     Component.onCompleted: values = dataProvider.productAValues()
@@ -47,5 +44,7 @@ Item {
                 }
             }
         }
+
+        BarChartBasicDescription {}
     }
 }

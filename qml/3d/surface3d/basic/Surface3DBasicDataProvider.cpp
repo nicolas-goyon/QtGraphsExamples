@@ -1,7 +1,7 @@
-#include "Surface3DDataProvider.h"
+#include "Surface3DBasicDataProvider.h"
 #include <QtMath>
 
-Surface3DDataProvider::Surface3DDataProvider(QObject *parent)
+Surface3DBasicDataProvider::Surface3DBasicDataProvider(QObject *parent)
     : QAbstractListModel(parent)
 {
     constexpr int steps = 30;
@@ -23,13 +23,13 @@ Surface3DDataProvider::Surface3DDataProvider(QObject *parent)
     }
 }
 
-int Surface3DDataProvider::rowCount(const QModelIndex &parent) const
+int Surface3DBasicDataProvider::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid()) return 0;
     return static_cast<int>(m_data.size());
 }
 
-QVariant Surface3DDataProvider::data(const QModelIndex &index, int role) const
+QVariant Surface3DBasicDataProvider::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid() || index.row() >= static_cast<int>(m_data.size()))
         return {};
@@ -42,7 +42,7 @@ QVariant Surface3DDataProvider::data(const QModelIndex &index, int role) const
     }
 }
 
-QHash<int, QByteArray> Surface3DDataProvider::roleNames() const
+QHash<int, QByteArray> Surface3DBasicDataProvider::roleNames() const
 {
     return {
         {XRole, QByteArrayLiteral("x")},

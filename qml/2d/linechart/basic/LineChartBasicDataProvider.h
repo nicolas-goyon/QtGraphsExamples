@@ -5,13 +5,13 @@
 
 // Provides monthly temperature data (°C) for three cities.
 // Swap the implementation bodies to load from file, network, etc.
-class LineChartDataProvider : public QObject
+class LineChartBasicDataProvider : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
 
 public:
-    explicit LineChartDataProvider(QObject *parent = nullptr);
+    explicit LineChartBasicDataProvider(QObject *parent = nullptr);
 
     Q_INVOKABLE QVariantList londonData()   const;
     Q_INVOKABLE QVariantList madridData()   const;
