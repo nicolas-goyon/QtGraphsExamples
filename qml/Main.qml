@@ -53,28 +53,27 @@ ApplicationWindow {
 
         ChartPage {
             navItems: [
-                { label: "Line Chart",    variants: ["Basic Example", "With Legend"] },
-                { label: "Bar Chart",     variants: ["Basic Example", "With Legend"] },
-                { label: "Scatter Chart", variants: ["Basic Example", "With Legend"] }
+                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line"] },
+                { label: "Area Chart",    variants: ["Basic Example", "Stacked"] },
+                { label: "Bar Chart",     variants: ["Basic Example"] },
+                { label: "Scatter Chart", variants: ["Basic Example"] }
             ]
-            // Flat order must match flatIndex(): group 0 variants first, then group 1, etc.
             LineChartBasicExample    {}
-            LineChartLegendExample   {}
+            LineChartTableExample    {}
+            LineChartTargetExample   {}
+            AreaChartBasicExample    {}
+            AreaChartStackedExample  {}
             BarChartBasicExample     {}
-            BarChartLegendExample    {}
             ScatterChartBasicExample {}
-            ScatterChartLegendExample {}
         }
 
         ChartPage {
             navItems: [
-                { label: "3D Bars",    variants: ["Basic Example", "With Legend"] },
-                { label: "3D Surface", variants: ["Basic Example", "With Legend"] }
+                { label: "3D Bars",    variants: ["Basic Example"] },
+                { label: "3D Surface", variants: ["Basic Example"] }
             ]
             Bars3DBasicExample    {}
-            Bars3DLegendExample   {}
             Surface3DBasicExample {}
-            Surface3DLegendExample {}
         }
     }
 

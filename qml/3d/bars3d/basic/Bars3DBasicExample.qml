@@ -1,50 +1,58 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import QtGraphs
 import QtGraphsExamples
 
 Item {
 
-    ColumnLayout {
+    ScrollView {
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 8
+        contentWidth: availableWidth
+        contentHeight: content.implicitHeight + 32
 
-        Text {
-            text: "3D Bar Chart — Sales per Region & Quarter"
-            font { pixelSize: 16; bold: true }
-            color: "#95e3de"
-        }
+        ColumnLayout {
+            id: content
+            x: 16; y: 16
+            width: parent.width - 32
+            spacing: 8
 
-        Bars3D {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            Text {
+                text: "3D Bar Chart — Sales per Region & Quarter"
+                font { pixelSize: 16; bold: true }
+                color: "#95e3de"
+            }
 
-            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
-            lightStrength:        10
-            ambientLightStrength: 0
-            shadowQuality:        Graphs3D.ShadowQuality.Medium
-            shadowStrength:       10
+            Bars3D {
+                Layout.fillWidth: true
+                implicitHeight: 400
 
-            cameraXRotation: -25
-            cameraYRotation: 30
+                theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
+                lightStrength:        10
+                ambientLightStrength: 0
+                shadowQuality:        Graphs3D.ShadowQuality.Medium
+                shadowStrength:       10
 
-            columnAxis: Category3DAxis { labels: ["Q1", "Q2", "Q3", "Q4"] }
-            rowAxis:    Category3DAxis { labels: ["North", "South", "East", "West"] }
+                cameraXRotation: -25
+                cameraYRotation: 30
 
-            Bar3DSeries {
-                itemLabelFormat: "@rowLabel / @colLabel: @valueLabel"
-                baseColor: "#2072fb"
+                columnAxis: Category3DAxis { labels: ["Q1", "Q2", "Q3", "Q4"] }
+                rowAxis:    Category3DAxis { labels: ["North", "South", "East", "West"] }
 
-                ItemModelBarDataProxy {
-                    itemModel:  Bars3DBasicDataProvider {}
-                    rowRole:    "row"
-                    columnRole: "col"
-                    valueRole:  "value"
+                Bar3DSeries {
+                    itemLabelFormat: "@rowLabel / @colLabel: @valueLabel"
+                    baseColor: "#2072fb"
+
+                    ItemModelBarDataProxy {
+                        itemModel:  Bars3DBasicDataProvider {}
+                        rowRole:    "row"
+                        columnRole: "col"
+                        valueRole:  "value"
+                    }
                 }
             }
-        }
 
-        Bars3DBasicDescription {}
+            Bars3DBasicDescription {}
+        }
     }
 }

@@ -1,49 +1,57 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import QtGraphs
 import QtGraphsExamples
 
 Item {
 
-    ColumnLayout {
+    ScrollView {
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 8
+        contentWidth: availableWidth
+        contentHeight: content.implicitHeight + 32
 
-        Text {
-            text: "3D Surface Chart — sin(x) * cos(z)"
-            font { pixelSize: 16; bold: true }
-            color: "#cdd6f4"
-        }
+        ColumnLayout {
+            id: content
+            x: 16; y: 16
+            width: parent.width - 32
+            spacing: 8
 
-        Surface3D {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            Text {
+                text: "3D Surface Chart — sin(x) * cos(z)"
+                font { pixelSize: 16; bold: true }
+                color: "#cdd6f4"
+            }
 
-            theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
+            Surface3D {
+                Layout.fillWidth: true
+                implicitHeight: 400
 
-            cameraXRotation: -45
-            cameraYRotation: 30
+                theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
-            axisX: Value3DAxis { min: -3.14; max: 3.14; title: "X"; titleVisible: true }
-            axisY: Value3DAxis { min: -1.0;  max: 1.0;  title: "Y"; titleVisible: true }
-            axisZ: Value3DAxis { min: -3.14; max: 3.14; title: "Z"; titleVisible: true }
+                cameraXRotation: -45
+                cameraYRotation: 30
 
-            Surface3DSeries {
-                drawMode: Surface3DSeries.DrawSurfaceAndWireframe
-                baseColor: "#89b4fa"
+                axisX: Value3DAxis { min: -3.14; max: 3.14; title: "X"; titleVisible: true }
+                axisY: Value3DAxis { min: -1.0;  max: 1.0;  title: "Y"; titleVisible: true }
+                axisZ: Value3DAxis { min: -3.14; max: 3.14; title: "Z"; titleVisible: true }
 
-                ItemModelSurfaceDataProxy {
-                    itemModel:  Surface3DBasicDataProvider {}
-                    rowRole:    "z"
-                    columnRole: "x"
-                    xPosRole:   "x"
-                    yPosRole:   "y"
-                    zPosRole:   "z"
+                Surface3DSeries {
+                    drawMode: Surface3DSeries.DrawSurfaceAndWireframe
+                    baseColor: "#89b4fa"
+
+                    ItemModelSurfaceDataProxy {
+                        itemModel:  Surface3DBasicDataProvider {}
+                        rowRole:    "z"
+                        columnRole: "x"
+                        xPosRole:   "x"
+                        yPosRole:   "y"
+                        zPosRole:   "z"
+                    }
                 }
             }
-        }
 
-        Surface3DBasicDescription {}
+            Surface3DBasicDescription {}
+        }
     }
 }
