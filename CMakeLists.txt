@@ -48,6 +48,7 @@ qt_add_qml_module(QtGraphsExamples
         qml/3d/surface3d/basic/Surface3DBasicDataProvider.cpp
     QML_FILES
         qml/Main.qml
+        qml/ChartPage.qml
         # ── 2D ──────────────────────────────────────────────────
         qml/2d/linechart/basic/LineChartBasicExample.qml
         qml/2d/linechart/basic/LineChartBasicDescription.qml
@@ -69,6 +70,10 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/areachart/stacked/AreaChartStackedDescription.qml
         qml/2d/areachart/pointlabels/AreaChartPointLabelsExample.qml
         qml/2d/areachart/pointlabels/AreaChartPointLabelsDescription.qml
+        qml/2d/areachart/stackedlabels/AreaChartStackedSideLegendExample.qml
+        qml/2d/areachart/stackedlabels/AreaChartStackedSideLegendDescription.qml
+        qml/2d/areachart/stackedlabels/AreaChartStackedInlineLabelsExample.qml
+        qml/2d/areachart/stackedlabels/AreaChartStackedInlineLabelsDescription.qml
         qml/2d/barchart/basic/BarChartBasicExample.qml
         qml/2d/barchart/basic/BarChartBasicDescription.qml
         qml/2d/scatterchart/basic/ScatterChartBasicExample.qml
