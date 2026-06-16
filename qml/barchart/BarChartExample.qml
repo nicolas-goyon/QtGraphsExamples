@@ -1,8 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
 import QtGraphs
+import QtGraphsExamples
 
 Item {
+
+    BarChartDataProvider { id: dataProvider }
 
     ColumnLayout {
         anchors.fill: parent
@@ -23,29 +26,24 @@ Item {
                 colorScheme: GraphsTheme.ColorScheme.Dark
             }
 
-            axisY: ValueAxis {
-                min: 0
-                max: 120
-                tickInterval: 20
-                labelFormat: "$%g M"
-            }
+            axisY: ValueAxis { min: 0; max: 120; tickInterval: 20; labelFormat: "$%g M" }
 
             BarSeries {
                 axisX: BarCategoryAxis {
-                    categories: ["Q1", "Q2", "Q3", "Q4"]
+                    Component.onCompleted: categories = dataProvider.categories()
                 }
 
                 BarSet {
                     label: "Product A"
-                    values: [52, 61, 74, 88]
+                    Component.onCompleted: values = dataProvider.productAValues()
                 }
                 BarSet {
                     label: "Product B"
-                    values: [38, 45, 55, 70]
+                    Component.onCompleted: values = dataProvider.productBValues()
                 }
                 BarSet {
                     label: "Product C"
-                    values: [21, 29, 40, 58]
+                    Component.onCompleted: values = dataProvider.productCValues()
                 }
             }
         }

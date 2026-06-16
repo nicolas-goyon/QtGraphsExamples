@@ -1,0 +1,57 @@
+import QtQuick
+import QtQuick.Layouts
+import QtGraphs
+import QtGraphsExamples
+
+Item {
+
+    ScatterChartDataProvider { id: dataProvider }
+
+    ColumnLayout {
+        anchors.fill: parent
+        anchors.margins: 16
+        spacing: 8
+
+        Text {
+            text: "Scatter Chart — Height vs Weight by Group"
+            font { pixelSize: 16; bold: true }
+            color: "#cdd6f4"
+        }
+
+        GraphsView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            theme: GraphsTheme {
+                colorScheme: GraphsTheme.ColorScheme.Dark
+            }
+
+            axisX: ValueAxis { min: 140; max: 210; tickInterval: 10; labelFormat: "%g cm" }
+            axisY: ValueAxis { min: 40;  max: 130; tickInterval: 10; labelFormat: "%g kg" }
+
+            ScatterSeries {
+                name: "Group A"
+                Component.onCompleted: {
+                    var pts = dataProvider.groupAData()
+                    for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
+                }
+            }
+
+            ScatterSeries {
+                name: "Group B"
+                Component.onCompleted: {
+                    var pts = dataProvider.groupBData()
+                    for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
+                }
+            }
+
+            ScatterSeries {
+                name: "Group C"
+                Component.onCompleted: {
+                    var pts = dataProvider.groupCData()
+                    for (var i = 0; i < pts.length; i++) append(pts[i].x, pts[i].y)
+                }
+            }
+        }
+    }
+}
