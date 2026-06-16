@@ -62,12 +62,14 @@ Item {
         axisX: ValueAxis {
             min: 0; max: 11
             tickInterval: 1
+            gridVisible: false
             labelFormat: "%g"
         }
 
         axisY: ValueAxis {
             id: yAxis
             min: 0; max: 500
+            gridVisible: false
             tickInterval: 0   // 0 = auto spacing (ValueAxis documentation)
             labelFormat: "%g"
         }

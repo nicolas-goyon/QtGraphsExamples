@@ -41,6 +41,7 @@ Item {
                 }
                 axisY: ValueAxis {
                     min: -2; max: 30
+                    gridVisible: false
                     tickInterval: 5
                     labelFormat: "%g °C"
                 }

@@ -27,10 +27,16 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/linechart/table/LineChartTableDataProvider.cpp
         qml/2d/linechart/target/LineChartTargetDataProvider.h
         qml/2d/linechart/target/LineChartTargetDataProvider.cpp
+        qml/2d/linechart/range/LineChartRangeDataProvider.h
+        qml/2d/linechart/range/LineChartRangeDataProvider.cpp
+        qml/2d/linechart/stacked/LineChartStackedDataProvider.h
+        qml/2d/linechart/stacked/LineChartStackedDataProvider.cpp
         qml/2d/areachart/basic/AreaChartBasicDataProvider.h
         qml/2d/areachart/basic/AreaChartBasicDataProvider.cpp
         qml/2d/areachart/stacked/AreaChartStackedDataProvider.h
         qml/2d/areachart/stacked/AreaChartStackedDataProvider.cpp
+        qml/2d/areachart/pointlabels/AreaChartPointLabelsDataProvider.h
+        qml/2d/areachart/pointlabels/AreaChartPointLabelsDataProvider.cpp
         qml/2d/barchart/basic/BarChartBasicDataProvider.h
         qml/2d/barchart/basic/BarChartBasicDataProvider.cpp
         qml/2d/scatterchart/basic/ScatterChartBasicDataProvider.h
@@ -51,10 +57,18 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/linechart/table/LineChartTableDescription.qml
         qml/2d/linechart/target/LineChartTargetExample.qml
         qml/2d/linechart/target/LineChartTargetDescription.qml
+        qml/2d/linechart/range/LineChartRangeExample.qml
+        qml/2d/linechart/range/LineChartRangeDescription.qml
+        qml/2d/linechart/stacked/LineChartStackedExample.qml
+        qml/2d/linechart/stacked/LineChartStackedDescription.qml
+        qml/2d/linechart/stacked/LineChartStackedHoverExample.qml
+        qml/2d/linechart/stacked/LineChartStackedHoverDescription.qml
         qml/2d/areachart/basic/AreaChartBasicExample.qml
         qml/2d/areachart/basic/AreaChartBasicDescription.qml
         qml/2d/areachart/stacked/AreaChartStackedExample.qml
         qml/2d/areachart/stacked/AreaChartStackedDescription.qml
+        qml/2d/areachart/pointlabels/AreaChartPointLabelsExample.qml
+        qml/2d/areachart/pointlabels/AreaChartPointLabelsDescription.qml
         qml/2d/barchart/basic/BarChartBasicExample.qml
         qml/2d/barchart/basic/BarChartBasicDescription.qml
         qml/2d/scatterchart/basic/ScatterChartBasicExample.qml
@@ -72,8 +86,11 @@ target_include_directories(QtGraphsExamples PRIVATE
     qml/2d/linechart/basic
     qml/2d/linechart/table
     qml/2d/linechart/target
+    qml/2d/linechart/range
+    qml/2d/linechart/stacked
     qml/2d/areachart/basic
     qml/2d/areachart/stacked
+    qml/2d/areachart/pointlabels
     qml/2d/barchart/basic
     qml/2d/scatterchart/basic
     qml/3d/bars3d/basic

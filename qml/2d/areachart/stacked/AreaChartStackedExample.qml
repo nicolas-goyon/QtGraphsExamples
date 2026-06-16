@@ -67,6 +67,7 @@ Item {
                 }
                 axisY: ValueAxis {
                     min: 0; max: 1400
+                    gridVisible: false
                     tickInterval: 200
                     labelFormat: "%g"
                 }

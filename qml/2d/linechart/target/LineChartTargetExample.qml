@@ -37,10 +37,12 @@ Item {
                 axisX: ValueAxis {
                     min: 2015; max: 2024
                     tickInterval: 1
+                    gridVisible: false
                     labelFormat: "%g"
                 }
                 axisY: ValueAxis {
                     min: 0; max: 140
+                    gridVisible: false
                     tickInterval: 20
                     labelFormat: "$%g k"
                 }

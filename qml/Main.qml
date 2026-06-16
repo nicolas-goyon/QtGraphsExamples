@@ -53,17 +53,21 @@ ApplicationWindow {
 
         ChartPage {
             navItems: [
-                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line"] },
-                { label: "Area Chart",    variants: ["Basic Example", "Stacked"] },
+                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover"] },
+                { label: "Area Chart",    variants: ["Basic Example", "Stacked", "With Point Labels"] },
                 { label: "Bar Chart",     variants: ["Basic Example"] },
                 { label: "Scatter Chart", variants: ["Basic Example"] }
             ]
             LineChartBasicExample    {}
             LineChartTableExample    {}
             LineChartTargetExample   {}
+            LineChartRangeExample    {}
+            LineChartStackedExample      {}
+            LineChartStackedHoverExample  {}
             AreaChartBasicExample    {}
-            AreaChartStackedExample  {}
-            BarChartBasicExample     {}
+            AreaChartStackedExample       {}
+            AreaChartPointLabelsExample   {}
+            BarChartBasicExample          {}
             ScatterChartBasicExample {}
         }
 

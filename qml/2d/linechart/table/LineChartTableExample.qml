@@ -45,6 +45,7 @@ Item {
             LineChartTableGraph {
                 id: graph
                 Layout.fillWidth: true
+
             }
 
             // ── Hint label ────────────────────────────────────────────────────────
