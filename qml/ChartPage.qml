@@ -15,7 +15,7 @@ Item {
 
     Component.onCompleted: {
         var arr = []
-        for (var i = 0; i < navItems.length; i++) arr.push(true)
+        for (var i = 0; i < navItems.length; i++) arr.push(false)
         expanded = arr
         currentIndex = 0
     }

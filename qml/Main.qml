@@ -54,10 +54,10 @@ ApplicationWindow {
         // ── 2D Charts ─────────────────────────────────────────────────────────
         ChartPage {
             navItems: [
-                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover"] },
-                { label: "Area Chart",    variants: ["Basic Example", "Stacked", "With Point Labels", "Stacked + Side Legend", "Stacked + Inline Labels"] },
-                { label: "Bar Chart",     variants: ["Basic Example"] },
-                { label: "Scatter Chart", variants: ["Basic Example"] }
+                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover", "Live"] },
+                { label: "Area Chart",    variants: ["Basic Example", "Stacked", "With Point Labels", "Stacked + Side Legend", "Stacked + Inline Labels", "Live"] },
+                { label: "Bar Chart",     variants: ["Basic Example", "Stacked", "With Labels", "With Target Line"] },
+                { label: "Scatter Chart", variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Live"] }
             ]
             LineChartBasicExample        {}
             LineChartTableExample        {}
@@ -65,13 +65,22 @@ ApplicationWindow {
             LineChartRangeExample        {}
             LineChartStackedExample      {}
             LineChartStackedHoverExample {}
-            AreaChartBasicExample        {}
-            AreaChartStackedExample      {}
-            AreaChartPointLabelsExample          {}
-            AreaChartStackedSideLegendExample    {}
-            AreaChartStackedInlineLabelsExample  {}
-            BarChartBasicExample                 {}
-            ScatterChartBasicExample     {}
+            LiveLineChartExample         {}
+            AreaChartBasicExample               {}
+            AreaChartStackedExample             {}
+            AreaChartPointLabelsExample         {}
+            AreaChartStackedSideLegendExample   {}
+            AreaChartStackedInlineLabelsExample {}
+            LiveAreaChartExample                {}
+            BarChartBasicExample         {}
+            BarChartStackedExample       {}
+            BarChartLabelsExample        {}
+            BarChartTargetLineExample    {}
+            ScatterChartBasicExample          {}
+            ScatterChartTrendLineExample      {}
+            ScatterChartCustomMarkersExample  {}
+            ScatterChartHoverExample          {}
+            LiveScatterChartExample           {}
         }
 
         // ── 3D Charts ─────────────────────────────────────────────────────────

@@ -39,8 +39,20 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/areachart/pointlabels/AreaChartPointLabelsDataProvider.cpp
         qml/2d/barchart/basic/BarChartBasicDataProvider.h
         qml/2d/barchart/basic/BarChartBasicDataProvider.cpp
+        qml/2d/barchart/stacked/BarChartStackedDataProvider.h
+        qml/2d/barchart/stacked/BarChartStackedDataProvider.cpp
+        qml/2d/barchart/labels/BarChartLabelsDataProvider.h
+        qml/2d/barchart/labels/BarChartLabelsDataProvider.cpp
+        qml/2d/barchart/targetline/BarChartTargetLineDataProvider.h
+        qml/2d/barchart/targetline/BarChartTargetLineDataProvider.cpp
         qml/2d/scatterchart/basic/ScatterChartBasicDataProvider.h
         qml/2d/scatterchart/basic/ScatterChartBasicDataProvider.cpp
+        qml/2d/scatterchart/trendline/ScatterChartTrendLineDataProvider.h
+        qml/2d/scatterchart/trendline/ScatterChartTrendLineDataProvider.cpp
+        qml/2d/scatterchart/custommarkers/ScatterChartCustomMarkersDataProvider.h
+        qml/2d/scatterchart/custommarkers/ScatterChartCustomMarkersDataProvider.cpp
+        qml/2d/scatterchart/hover/ScatterChartHoverDataProvider.h
+        qml/2d/scatterchart/hover/ScatterChartHoverDataProvider.cpp
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.h
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.cpp
@@ -64,6 +76,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/linechart/stacked/LineChartStackedDescription.qml
         qml/2d/linechart/stacked/LineChartStackedHoverExample.qml
         qml/2d/linechart/stacked/LineChartStackedHoverDescription.qml
+        qml/2d/linechart/live/LiveLineChartExample.qml
+        qml/2d/linechart/live/LiveLineChartDescription.qml
         qml/2d/areachart/basic/AreaChartBasicExample.qml
         qml/2d/areachart/basic/AreaChartBasicDescription.qml
         qml/2d/areachart/stacked/AreaChartStackedExample.qml
@@ -74,10 +88,26 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/areachart/stackedlabels/AreaChartStackedSideLegendDescription.qml
         qml/2d/areachart/stackedlabels/AreaChartStackedInlineLabelsExample.qml
         qml/2d/areachart/stackedlabels/AreaChartStackedInlineLabelsDescription.qml
+        qml/2d/areachart/live/LiveAreaChartExample.qml
+        qml/2d/areachart/live/LiveAreaChartDescription.qml
         qml/2d/barchart/basic/BarChartBasicExample.qml
         qml/2d/barchart/basic/BarChartBasicDescription.qml
+        qml/2d/barchart/stacked/BarChartStackedExample.qml
+        qml/2d/barchart/stacked/BarChartStackedDescription.qml
+        qml/2d/barchart/labels/BarChartLabelsExample.qml
+        qml/2d/barchart/labels/BarChartLabelsDescription.qml
+        qml/2d/barchart/targetline/BarChartTargetLineExample.qml
+        qml/2d/barchart/targetline/BarChartTargetLineDescription.qml
         qml/2d/scatterchart/basic/ScatterChartBasicExample.qml
         qml/2d/scatterchart/basic/ScatterChartBasicDescription.qml
+        qml/2d/scatterchart/trendline/ScatterChartTrendLineExample.qml
+        qml/2d/scatterchart/trendline/ScatterChartTrendLineDescription.qml
+        qml/2d/scatterchart/custommarkers/ScatterChartCustomMarkersExample.qml
+        qml/2d/scatterchart/custommarkers/ScatterChartCustomMarkersDescription.qml
+        qml/2d/scatterchart/hover/ScatterChartHoverExample.qml
+        qml/2d/scatterchart/hover/ScatterChartHoverDescription.qml
+        qml/2d/scatterchart/live/LiveScatterChartExample.qml
+        qml/2d/scatterchart/live/LiveScatterChartDescription.qml
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicExample.qml
         qml/3d/bars3d/basic/Bars3DBasicDescription.qml
@@ -97,7 +127,13 @@ target_include_directories(QtGraphsExamples PRIVATE
     qml/2d/areachart/stacked
     qml/2d/areachart/pointlabels
     qml/2d/barchart/basic
+    qml/2d/barchart/stacked
+    qml/2d/barchart/labels
+    qml/2d/barchart/targetline
     qml/2d/scatterchart/basic
+    qml/2d/scatterchart/trendline
+    qml/2d/scatterchart/custommarkers
+    qml/2d/scatterchart/hover
     qml/3d/bars3d/basic
     qml/3d/surface3d/basic
 )
