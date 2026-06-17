@@ -31,6 +31,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/linechart/range/LineChartRangeDataProvider.cpp
         qml/2d/linechart/stacked/LineChartStackedDataProvider.h
         qml/2d/linechart/stacked/LineChartStackedDataProvider.cpp
+        qml/2d/linechart/legend/LineChartLegendDataProvider.h
+        qml/2d/linechart/legend/LineChartLegendDataProvider.cpp
         qml/2d/areachart/basic/AreaChartBasicDataProvider.h
         qml/2d/areachart/basic/AreaChartBasicDataProvider.cpp
         qml/2d/areachart/stacked/AreaChartStackedDataProvider.h
@@ -45,6 +47,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/barchart/labels/BarChartLabelsDataProvider.cpp
         qml/2d/barchart/targetline/BarChartTargetLineDataProvider.h
         qml/2d/barchart/targetline/BarChartTargetLineDataProvider.cpp
+        qml/2d/barchart/legend/BarChartLegendDataProvider.h
+        qml/2d/barchart/legend/BarChartLegendDataProvider.cpp
         qml/2d/scatterchart/basic/ScatterChartBasicDataProvider.h
         qml/2d/scatterchart/basic/ScatterChartBasicDataProvider.cpp
         qml/2d/scatterchart/trendline/ScatterChartTrendLineDataProvider.h
@@ -53,11 +57,35 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/scatterchart/custommarkers/ScatterChartCustomMarkersDataProvider.cpp
         qml/2d/scatterchart/hover/ScatterChartHoverDataProvider.h
         qml/2d/scatterchart/hover/ScatterChartHoverDataProvider.cpp
+        qml/2d/scatterchart/legend/ScatterChartLegendDataProvider.h
+        qml/2d/scatterchart/legend/ScatterChartLegendDataProvider.cpp
+        qml/2d/splinechart/basic/SplineChartBasicDataProvider.h
+        qml/2d/splinechart/basic/SplineChartBasicDataProvider.cpp
+        qml/2d/populationpyramid/basic/PopulationPyramidDataProvider.h
+        qml/2d/populationpyramid/basic/PopulationPyramidDataProvider.cpp
+        qml/2d/barchart/stackedpercent/BarChartStackedPercentDataProvider.h
+        qml/2d/barchart/stackedpercent/BarChartStackedPercentDataProvider.cpp
+        qml/2d/barchart/horizontal/BarChartHorizontalDataProvider.h
+        qml/2d/barchart/horizontal/BarChartHorizontalDataProvider.cpp
+        qml/2d/barchart/mixedline/BarChartMixedLineDataProvider.h
+        qml/2d/barchart/mixedline/BarChartMixedLineDataProvider.cpp
+        qml/2d/scatterchart/trendlines/ScatterChartTrendLinesDataProvider.h
+        qml/2d/scatterchart/trendlines/ScatterChartTrendLinesDataProvider.cpp
+        qml/2d/scatterchart/averages/ScatterChartAveragesDataProvider.h
+        qml/2d/scatterchart/averages/ScatterChartAveragesDataProvider.cpp
+        qml/2d/piechart/basic/PieChartBasicDataProvider.h
+        qml/2d/piechart/basic/PieChartBasicDataProvider.cpp
+        qml/2d/linechart/editor/LineChartEditorDataProvider.h
+        qml/2d/linechart/editor/LineChartEditorDataProvider.cpp
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.h
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.cpp
+        qml/3d/bars3d/legend/Bars3DLegendDataProvider.h
+        qml/3d/bars3d/legend/Bars3DLegendDataProvider.cpp
         qml/3d/surface3d/basic/Surface3DBasicDataProvider.h
         qml/3d/surface3d/basic/Surface3DBasicDataProvider.cpp
+        qml/3d/surface3d/legend/Surface3DLegendDataProvider.h
+        qml/3d/surface3d/legend/Surface3DLegendDataProvider.cpp
     QML_FILES
         qml/Main.qml
         qml/ChartPage.qml
@@ -76,8 +104,21 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/linechart/stacked/LineChartStackedDescription.qml
         qml/2d/linechart/stacked/LineChartStackedHoverExample.qml
         qml/2d/linechart/stacked/LineChartStackedHoverDescription.qml
+        qml/2d/linechart/legend/LineChartInlineLegendExample.qml
+        qml/2d/linechart/legend/LineChartInlineLegendDescription.qml
+        qml/2d/linechart/legend/LineChartSideLegendExample.qml
+        qml/2d/linechart/legend/LineChartSideLegendDescription.qml
         qml/2d/linechart/live/LiveLineChartExample.qml
         qml/2d/linechart/live/LiveLineChartDescription.qml
+        qml/2d/linechart/editor/LineChartEditorExample.qml
+        qml/2d/linechart/editor/LineChartEditorDescription.qml
+        qml/2d/linechart/editor/LineChartEditorInspector.qml
+        qml/2d/linechart/editor/components/EditorPropField.qml
+        qml/2d/linechart/editor/components/EditorPropSlider.qml
+        qml/2d/linechart/editor/components/EditorSectionLabel.qml
+        qml/2d/linechart/editor/components/EditorSeriesPanel.qml
+        qml/2d/linechart/editor/components/EditorNumericField.qml
+        qml/2d/linechart/editor/components/EditorToggle.qml
         qml/2d/areachart/basic/AreaChartBasicExample.qml
         qml/2d/areachart/basic/AreaChartBasicDescription.qml
         qml/2d/areachart/stacked/AreaChartStackedExample.qml
@@ -98,6 +139,10 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/barchart/labels/BarChartLabelsDescription.qml
         qml/2d/barchart/targetline/BarChartTargetLineExample.qml
         qml/2d/barchart/targetline/BarChartTargetLineDescription.qml
+        qml/2d/barchart/legend/BarChartInlineLegendExample.qml
+        qml/2d/barchart/legend/BarChartInlineLegendDescription.qml
+        qml/2d/barchart/legend/BarChartSideLegendExample.qml
+        qml/2d/barchart/legend/BarChartSideLegendDescription.qml
         qml/2d/scatterchart/basic/ScatterChartBasicExample.qml
         qml/2d/scatterchart/basic/ScatterChartBasicDescription.qml
         qml/2d/scatterchart/trendline/ScatterChartTrendLineExample.qml
@@ -108,11 +153,41 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/scatterchart/hover/ScatterChartHoverDescription.qml
         qml/2d/scatterchart/live/LiveScatterChartExample.qml
         qml/2d/scatterchart/live/LiveScatterChartDescription.qml
+        qml/2d/scatterchart/legend/ScatterChartInlineLegendExample.qml
+        qml/2d/scatterchart/legend/ScatterChartInlineLegendDescription.qml
+        qml/2d/scatterchart/legend/ScatterChartSideLegendExample.qml
+        qml/2d/scatterchart/legend/ScatterChartSideLegendDescription.qml
+        qml/2d/splinechart/basic/SplineChartBasicExample.qml
+        qml/2d/splinechart/basic/SplineChartBasicDescription.qml
+        qml/2d/populationpyramid/basic/PopulationPyramidExample.qml
+        qml/2d/populationpyramid/basic/PopulationPyramidDescription.qml
+        qml/2d/heatmap/basic/HeatmapExample.qml
+        qml/2d/heatmap/basic/HeatmapDescription.qml
+        qml/2d/barchart/stackedpercent/BarChartStackedPercentExample.qml
+        qml/2d/barchart/stackedpercent/BarChartStackedPercentDescription.qml
+        qml/2d/barchart/horizontal/BarChartHorizontalExample.qml
+        qml/2d/barchart/horizontal/BarChartHorizontalDescription.qml
+        qml/2d/barchart/mixedline/BarChartMixedLineExample.qml
+        qml/2d/barchart/mixedline/BarChartMixedLineDescription.qml
+        qml/2d/scatterchart/trendlines/ScatterChartTrendLinesExample.qml
+        qml/2d/scatterchart/trendlines/ScatterChartTrendLinesDescription.qml
+        qml/2d/scatterchart/averages/ScatterChartAveragesExample.qml
+        qml/2d/scatterchart/averages/ScatterChartAveragesDescription.qml
+        qml/2d/piechart/basic/PieChartBasicExample.qml
+        qml/2d/piechart/basic/PieChartBasicDescription.qml
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicExample.qml
         qml/3d/bars3d/basic/Bars3DBasicDescription.qml
+        qml/3d/bars3d/legend/Bars3DInlineLegendExample.qml
+        qml/3d/bars3d/legend/Bars3DInlineLegendDescription.qml
+        qml/3d/bars3d/legend/Bars3DSideLegendExample.qml
+        qml/3d/bars3d/legend/Bars3DSideLegendDescription.qml
         qml/3d/surface3d/basic/Surface3DBasicExample.qml
         qml/3d/surface3d/basic/Surface3DBasicDescription.qml
+        qml/3d/surface3d/legend/Surface3DInlineLegendExample.qml
+        qml/3d/surface3d/legend/Surface3DInlineLegendDescription.qml
+        qml/3d/surface3d/legend/Surface3DSideLegendExample.qml
+        qml/3d/surface3d/legend/Surface3DSideLegendDescription.qml
 )
 
 # Each variant subfolder must be on the include path so the auto-generated
@@ -123,6 +198,7 @@ target_include_directories(QtGraphsExamples PRIVATE
     qml/2d/linechart/target
     qml/2d/linechart/range
     qml/2d/linechart/stacked
+    qml/2d/linechart/legend
     qml/2d/areachart/basic
     qml/2d/areachart/stacked
     qml/2d/areachart/pointlabels
@@ -130,12 +206,25 @@ target_include_directories(QtGraphsExamples PRIVATE
     qml/2d/barchart/stacked
     qml/2d/barchart/labels
     qml/2d/barchart/targetline
+    qml/2d/barchart/legend
     qml/2d/scatterchart/basic
     qml/2d/scatterchart/trendline
     qml/2d/scatterchart/custommarkers
     qml/2d/scatterchart/hover
+    qml/2d/scatterchart/legend
+    qml/2d/splinechart/basic
+    qml/2d/populationpyramid/basic
+    qml/2d/barchart/stackedpercent
+    qml/2d/barchart/horizontal
+    qml/2d/barchart/mixedline
+    qml/2d/scatterchart/trendlines
+    qml/2d/scatterchart/averages
+    qml/2d/piechart/basic
+    qml/2d/linechart/editor
     qml/3d/bars3d/basic
+    qml/3d/bars3d/legend
     qml/3d/surface3d/basic
+    qml/3d/surface3d/legend
 )
 
 target_link_libraries(QtGraphsExamples PRIVATE

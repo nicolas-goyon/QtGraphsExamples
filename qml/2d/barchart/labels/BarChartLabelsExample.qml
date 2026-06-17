@@ -19,7 +19,7 @@ Item {
             spacing: 8
 
             Text {
-                text: "Bar Chart — Monthly Defect Count (with value labels)"
+                text: "Bar Chart — Monthly Defect Rate % (with value labels)"
                 font { pixelSize: 16; bold: true }
                 color: "#cdd6f4"
             }
@@ -30,19 +30,20 @@ Item {
 
                 theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
-                axisY: ValueAxis { min: 0; max: 80; tickInterval: 10; labelFormat: "%g" }
+                axisX: BarCategoryAxis {
+                    Component.onCompleted: categories = dataProvider.categories()
+                }
+                axisY: ValueAxis { min: 0; max: 8; tickInterval: 1; labelFormat: "%g%%" }
 
                 BarSeries {
                     labelsVisible: true
                     labelsFormat: "@value"
+                    labelsPrecision: 2
 
-                    axisX: BarCategoryAxis {
-                        Component.onCompleted: categories = dataProvider.categories()
-                    }
                     BarSet {
-                        label: "Defects"
+                        label: "Defect Rate (%)"
                         Component.onCompleted: values = dataProvider.values()
-                        color :"#6755e3"
+                        color: "#6755e3"
                     }
                 }
             }

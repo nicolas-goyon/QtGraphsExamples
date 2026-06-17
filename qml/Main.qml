@@ -54,10 +54,14 @@ ApplicationWindow {
         // ── 2D Charts ─────────────────────────────────────────────────────────
         ChartPage {
             navItems: [
-                { label: "Line Chart",    variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover", "Live"] },
-                { label: "Area Chart",    variants: ["Basic Example", "Stacked", "With Point Labels", "Stacked + Side Legend", "Stacked + Inline Labels", "Live"] },
-                { label: "Bar Chart",     variants: ["Basic Example", "Stacked", "With Labels", "With Target Line"] },
-                { label: "Scatter Chart", variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Live"] }
+                { label: "Line Chart",         variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover", "Legend Inline", "Legend Below", "Live", "Live Editor"] },
+                { label: "Spline Chart",       variants: ["Basic Example"] },
+                { label: "Area Chart",         variants: ["Basic Example", "Stacked", "With Point Labels", "Stacked + Side Legend", "Stacked + Inline Labels", "Live"] },
+                { label: "Bar Chart",          variants: ["Basic Example", "Stacked", "With Labels", "With Target Line", "Stacked 100%", "Horizontal", "Mixed + Line", "Legend Inline", "Legend Below"] },
+                { label: "Scatter Chart",      variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Multi Trendlines", "Averages", "Legend Inline", "Legend Aside", "Live"] },
+                { label: "Population Pyramid", variants: ["Basic Example"] },
+                { label: "Heatmap",            variants: ["Basic Example"] },
+                { label: "Pie Chart",          variants: ["Basic Example"] }
             ]
             LineChartBasicExample        {}
             LineChartTableExample        {}
@@ -65,32 +69,52 @@ ApplicationWindow {
             LineChartRangeExample        {}
             LineChartStackedExample      {}
             LineChartStackedHoverExample {}
+            LineChartInlineLegendExample {}
+            LineChartSideLegendExample   {}
             LiveLineChartExample         {}
+            LineChartEditorExample       {}
+            SplineChartBasicExample      {}
             AreaChartBasicExample               {}
             AreaChartStackedExample             {}
             AreaChartPointLabelsExample         {}
             AreaChartStackedSideLegendExample   {}
             AreaChartStackedInlineLabelsExample {}
             LiveAreaChartExample                {}
-            BarChartBasicExample         {}
-            BarChartStackedExample       {}
-            BarChartLabelsExample        {}
-            BarChartTargetLineExample    {}
+            BarChartBasicExample          {}
+            BarChartStackedExample        {}
+            BarChartLabelsExample         {}
+            BarChartTargetLineExample     {}
+            BarChartStackedPercentExample {}
+            BarChartHorizontalExample     {}
+            BarChartMixedLineExample      {}
+            BarChartInlineLegendExample   {}
+            BarChartSideLegendExample     {}
             ScatterChartBasicExample          {}
             ScatterChartTrendLineExample      {}
             ScatterChartCustomMarkersExample  {}
             ScatterChartHoverExample          {}
+            ScatterChartTrendLinesExample     {}
+            ScatterChartAveragesExample       {}
+            ScatterChartInlineLegendExample   {}
+            ScatterChartSideLegendExample     {}
             LiveScatterChartExample           {}
+            PopulationPyramidExample {}
+            HeatmapExample           {}
+            PieChartBasicExample     {}
         }
 
         // ── 3D Charts ─────────────────────────────────────────────────────────
         ChartPage {
             navItems: [
-                { label: "3D Bars",    variants: ["Basic Example"] },
-                { label: "3D Surface", variants: ["Basic Example"] }
+                { label: "3D Bars",    variants: ["Basic Example", "Legend Inline", "Legend Below"] },
+                { label: "3D Surface", variants: ["Basic Example", "Legend Inline", "Legend Aside"] }
             ]
-            Bars3DBasicExample    {}
-            Surface3DBasicExample {}
+            Bars3DBasicExample        {}
+            Bars3DInlineLegendExample {}
+            Bars3DSideLegendExample   {}
+            Surface3DBasicExample        {}
+            Surface3DInlineLegendExample {}
+            Surface3DSideLegendExample   {}
         }
     }
 }

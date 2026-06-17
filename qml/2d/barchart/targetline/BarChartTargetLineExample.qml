@@ -32,13 +32,14 @@ Item {
 
                 theme: GraphsTheme { colorScheme: GraphsTheme.ColorScheme.Dark }
 
+                // ── Axes at view level so both BarSeries and LineSeries share them ──
+                axisX: BarCategoryAxis {
+                    Component.onCompleted: categories = dataProvider.categories()
+                }
                 axisY: ValueAxis { min: 0; max: 130; tickInterval: 20; labelFormat: "$%g M" }
 
                 // ── Bars ──────────────────────────────────────────────────────
                 BarSeries {
-                    axisX: BarCategoryAxis {
-                        Component.onCompleted: categories = dataProvider.categories()
-                    }
                     BarSet {
                         label: "Quarterly Sales"
                         Component.onCompleted: values = dataProvider.salesValues()
@@ -46,8 +47,8 @@ Item {
                 }
 
                 // ── Target line ───────────────────────────────────────────────
-                // The BarCategoryAxis maps each bar to integer positions 0..n-1,
-                // so the target line spans from -0.5 to n-0.5 to cover all bars.
+                // BarCategoryAxis maps categories to integer positions 0..n-1.
+                // The line spans -0.5 to n-0.5 to cover the full chart width.
                 LineSeries {
                     name: "Target ($85 M)"
                     color: "#f38ba8"
