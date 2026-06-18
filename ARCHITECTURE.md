@@ -10,6 +10,8 @@ The app is a single Qt Quick window (`Main.qml`) with a tab bar at the top (2D C
 
 Each example is fully self-contained in its own subfolder. Nothing is shared between examples by design — this makes each one easy to read and copy-paste in isolation.
 
+The one deliberate exception is `RadarChart.qml`, a pure-QML Canvas component shared across all radar chart variants. It is placed at `qml/2d/radarchart/RadarChart.qml` rather than inside a variant subfolder precisely because it is a reusable component, not an example page.
+
 ---
 
 ## File structure
@@ -26,7 +28,12 @@ qml/
 │   ├── scatterchart/     # basic, trendline, custommarkers, hover, trendlines, averages, legend, live
 │   ├── populationpyramid/# basic
 │   ├── heatmap/          # basic
-│   └── piechart/         # basic, donut
+│   ├── piechart/         # basic, donut
+│   └── radarchart/
+│       ├── RadarChart.qml          # Shared reusable Canvas component
+│       ├── basic/                  # Single-series example
+│       ├── multiline/              # Multi-series example
+│       └── legend/                 # Inline and below-chart legend variants
 └── 3d/
     ├── bars3d/           # basic, legend
     └── surface3d/        # basic, legend
@@ -166,7 +173,7 @@ Rectangle {
 
 ### 3. Create the C++ data provider (if needed)
 
-Pure-QML examples (like live charts) don't need one. If the example loads static data, create a provider:
+Pure-QML examples (live charts, heatmap, radar chart) don't need one. If the example loads static data, create a provider:
 
 **`<Name>DataProvider.h`**
 
@@ -256,6 +263,19 @@ Same steps as above, but also:
 
 ---
 
+## Adding a chart type that Qt Graphs does not natively support
+
+When Qt Graphs has no series type for the chart you want to implement (as is the case for radar / spider charts and heatmaps), use a pure-QML approach:
+
+- **Heatmap** — `Repeater` of `Rectangle`s inside a `Column`/`Row` grid. No `GraphsView` needed.
+- **Radar chart** — `Canvas` item using the Qt Quick 2D Canvas API. The component lives in `qml/2d/radarchart/RadarChart.qml` and is shared across all radar variants.
+
+For shared components like `RadarChart.qml`, place them at the chart-type root level (e.g. `qml/2d/radarchart/`) rather than inside a variant subfolder. Register them in `CMakeLists.txt` `QML_FILES` as usual — they become available as QML types automatically via `QTP0004`.
+
+No `target_include_directories` entry or `SOURCES` entry is needed for a pure-QML component.
+
+---
+
 ## Key Qt Graphs patterns used in this project
 
 **AreaSeries with stacking** — boundary `LineSeries` must be declared *outside* `GraphsView` as siblings, not inside it. If placed inside, they render as visible lines.
@@ -295,3 +315,29 @@ GraphsView {
 ```
 
 **Custom heatmap (pure QML)** — Qt Graphs has no built-in heatmap series type. The heatmap example is implemented entirely in QML: a `Repeater` of `Row`s, each containing a `Repeater` of `Rectangle`s. Cell color is computed from the value via a JavaScript helper function. `HoverHandler` + `ToolTip` attached properties provide per-cell tooltips. No `GraphsView` or data provider is needed.
+
+**Radar / spider chart (pure QML Canvas)** — Qt Graphs has no built-in radar series type. The radar chart is implemented as a reusable `RadarChart` Canvas component in `qml/2d/radarchart/RadarChart.qml`. It accepts an `axes` list, a `series` list of `{name, color, values}` objects, and a `maxValue` scale. Internally it uses the 2D Canvas API to draw grid rings, spokes, filled polygons per series, dot markers, and axis labels with smart text-alignment based on spoke angle. Updating any property calls `requestPaint()` to redraw.
+
+```qml
+RadarChart {
+    axes:     ["Speed", "Strength", "Endurance", "Agility", "Accuracy"]
+    maxValue: 100
+    series: [
+        { name: "Sprinter",    color: "#89b4fa", values: [95, 72, 55, 85, 78] },
+        { name: "Powerlifter", color: "#f38ba8", values: [60, 98, 45, 50, 62] }
+    ]
+}
+```
+
+**ItemModelBarDataProxy with multiple series** — each `Bar3DSeries` needs both `rowRole` and `columnRole` set. Without `columnRole`, the proxy cannot build a valid `QBarDataArray` and emits a data-format warning with no bars rendered. When the model has no natural column field, use `columnRolePattern` / `columnRoleReplace` to map all items to a single constant column category:
+
+```qml
+ItemModelBarDataProxy {
+    itemModel: dataProvider
+    rowRole:   "country"
+    columnRole: "country"
+    columnRolePattern: /^.*$/
+    columnRoleReplace: "Population"
+    valueRole: "urban"
+}
+```

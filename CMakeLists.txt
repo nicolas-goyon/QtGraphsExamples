@@ -79,6 +79,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/piechart/basic/PieChartBasicDataProvider.cpp
         qml/2d/linechart/editor/LineChartEditorDataProvider.h
         qml/2d/linechart/editor/LineChartEditorDataProvider.cpp
+        # ── Radar chart — pure QML, no C++ data provider ────────
+        # (no SOURCES entries needed)
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.h
         qml/3d/bars3d/basic/Bars3DBasicDataProvider.cpp
@@ -185,6 +187,16 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/piechart/basic/PieChartBasicDescription.qml
         qml/2d/piechart/donut/PieChartDonutExample.qml
         qml/2d/piechart/donut/PieChartDonutDescription.qml
+        # ── Radar chart ──────────────────────────────────────────
+        qml/2d/radarchart/RadarChart.qml
+        qml/2d/radarchart/basic/RadarChartBasicExample.qml
+        qml/2d/radarchart/basic/RadarChartBasicDescription.qml
+        qml/2d/radarchart/multiline/RadarChartMultiLineExample.qml
+        qml/2d/radarchart/multiline/RadarChartMultiLineDescription.qml
+        qml/2d/radarchart/legend/RadarChartInlineLegendExample.qml
+        qml/2d/radarchart/legend/RadarChartInlineLegendDescription.qml
+        qml/2d/radarchart/legend/RadarChartSideLegendExample.qml
+        qml/2d/radarchart/legend/RadarChartSideLegendDescription.qml
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicExample.qml
         qml/3d/bars3d/basic/Bars3DBasicDescription.qml

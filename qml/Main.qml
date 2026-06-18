@@ -61,7 +61,8 @@ ApplicationWindow {
                 { label: "Scatter Chart",      variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Multi Trendlines", "Averages", "Legend Inline", "Legend Aside", "Live"] },
                 { label: "Population Pyramid", variants: ["Basic Example"] },
                 { label: "Heatmap",            variants: ["Basic Example"] },
-                { label: "Pie Chart",          variants: ["Basic Example", "Donut"] }
+                { label: "Pie Chart",          variants: ["Basic Example", "Donut"] },
+                { label: "Radar Chart",        variants: ["Basic Example", "Multi-Series", "Legend Inline", "Legend Below"] }
             ]
             LineChartBasicExample        {}
             LineChartTableExample        {}
@@ -105,6 +106,10 @@ ApplicationWindow {
             HeatmapExample           {}
             PieChartBasicExample     {}
             PieChartDonutExample     {}
+            RadarChartBasicExample          {}
+            RadarChartMultiLineExample      {}
+            RadarChartInlineLegendExample   {}
+            RadarChartSideLegendExample     {}
         }
 
         // ── 3D Charts ─────────────────────────────────────────────────────────
