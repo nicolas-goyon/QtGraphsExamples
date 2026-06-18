@@ -18,13 +18,28 @@ Each example is fully self-contained in its own subfolder. Nothing is shared bet
 qml/
 ├── Main.qml              # App shell — declares ChartPage instances and wires up navItems
 ├── ChartPage.qml         # Reusable sidebar + StackLayout, accepts navItems and chart children
-└── 2d/
-    └── <charttype>/
-        └── <variant>/
-            ├── <Name>Example.qml         # The chart
-            ├── <Name>Description.qml     # Description block shown below the chart
-            ├── <Name>DataProvider.h      # C++ data provider (if needed)
-            └── <Name>DataProvider.cpp
+├── 2d/
+│   ├── linechart/        # basic, table, target, range, stacked, legend, live, editor
+│   ├── splinechart/      # basic, legend, live
+│   ├── areachart/        # basic, stacked, pointlabels, stackedlabels, live
+│   ├── barchart/         # basic, stacked, labels, targetline, stackedpercent, horizontal, mixedline, legend
+│   ├── scatterchart/     # basic, trendline, custommarkers, hover, trendlines, averages, legend, live
+│   ├── populationpyramid/# basic
+│   ├── heatmap/          # basic
+│   └── piechart/         # basic, donut
+└── 3d/
+    ├── bars3d/           # basic, legend
+    └── surface3d/        # basic, legend
+```
+
+Each variant subfolder follows this layout:
+
+```
+<variant>/
+├── <Name>Example.qml         # The chart
+├── <Name>Description.qml     # Description block shown below the chart
+├── <Name>DataProvider.h      # C++ data provider (if needed)
+└── <Name>DataProvider.cpp
 ```
 
 Naming convention: `BarChartStackedExample.qml`, `BarChartStackedDescription.qml`, `BarChartStackedDataProvider.h/.cpp`. The QML type name must match the filename exactly.
@@ -264,3 +279,19 @@ GraphsView {
 **Bar chart target line axis alignment** — `BarCategoryAxis` maps categories to integer positions 0..n-1. A `LineSeries` overlay spanning the full width must go from `-0.5` to `n - 0.5`.
 
 **`qt_policy(SET QTP0004 NEW)`** — enables auto-generation of `qmldir` for all QML files in subdirectories. Without this, QML types in subfolders are not discoverable.
+
+**SplineSeries** — drop-in replacement for `LineSeries` that draws smooth Catmull-Rom curves through the data points. Use exactly like `LineSeries`; `pointDelegate` works the same way.
+
+**PieSeries / PieSlice** — declared directly inside `GraphsView`. Each `PieSlice` carries `label`, `value`, and `color`. Set `labelVisible: true` on individual slices to show labels. Control overall size with `pieSize` (0.0–1.0) on `PieSeries`.
+
+```qml
+GraphsView {
+    PieSeries {
+        pieSize: 0.8
+        PieSlice { label: "A"; value: 40; color: "#89b4fa"; labelVisible: true }
+        PieSlice { label: "B"; value: 60; color: "#a6e3a1"; labelVisible: true }
+    }
+}
+```
+
+**Custom heatmap (pure QML)** — Qt Graphs has no built-in heatmap series type. The heatmap example is implemented entirely in QML: a `Repeater` of `Row`s, each containing a `Repeater` of `Rectangle`s. Cell color is computed from the value via a JavaScript helper function. `HoverHandler` + `ToolTip` attached properties provide per-cell tooltips. No `GraphsView` or data provider is needed.

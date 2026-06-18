@@ -61,6 +61,9 @@ Item {
                     ItemModelBarDataProxy {
                         itemModel: dataProvider
                         rowRole:   "country"
+                        columnRole: "country"
+                        columnRolePattern: /^.*$/
+                        columnRoleReplace: "Population"
                         valueRole: "urban"
                     }
                 }
@@ -71,6 +74,9 @@ Item {
                     ItemModelBarDataProxy {
                         itemModel: dataProvider
                         rowRole:   "country"
+                        columnRole: "country"
+                        columnRolePattern: /^.*$/
+                        columnRoleReplace: "Population"
                         valueRole: "rural"
                     }
                 }

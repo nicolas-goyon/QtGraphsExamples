@@ -55,13 +55,13 @@ ApplicationWindow {
         ChartPage {
             navItems: [
                 { label: "Line Chart",         variants: ["Basic Example", "With Table", "With Target Line", "With Range", "Stacked", "Stacked + Hover", "Legend Inline", "Legend Below", "Live", "Live Editor"] },
-                { label: "Spline Chart",       variants: ["Basic Example"] },
+                { label: "Spline Chart",       variants: ["Basic Example", "Legend Inline", "Legend Below", "Live"] },
                 { label: "Area Chart",         variants: ["Basic Example", "Stacked", "With Point Labels", "Stacked + Side Legend", "Stacked + Inline Labels", "Live"] },
                 { label: "Bar Chart",          variants: ["Basic Example", "Stacked", "With Labels", "With Target Line", "Stacked 100%", "Horizontal", "Mixed + Line", "Legend Inline", "Legend Below"] },
                 { label: "Scatter Chart",      variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Multi Trendlines", "Averages", "Legend Inline", "Legend Aside", "Live"] },
                 { label: "Population Pyramid", variants: ["Basic Example"] },
                 { label: "Heatmap",            variants: ["Basic Example"] },
-                { label: "Pie Chart",          variants: ["Basic Example"] }
+                { label: "Pie Chart",          variants: ["Basic Example", "Donut"] }
             ]
             LineChartBasicExample        {}
             LineChartTableExample        {}
@@ -73,7 +73,10 @@ ApplicationWindow {
             LineChartSideLegendExample   {}
             LiveLineChartExample         {}
             LineChartEditorExample       {}
-            SplineChartBasicExample      {}
+            SplineChartBasicExample          {}
+            SplineChartInlineLegendExample   {}
+            SplineChartSideLegendExample     {}
+            LiveSplineChartExample           {}
             AreaChartBasicExample               {}
             AreaChartStackedExample             {}
             AreaChartPointLabelsExample         {}
@@ -101,6 +104,7 @@ ApplicationWindow {
             PopulationPyramidExample {}
             HeatmapExample           {}
             PieChartBasicExample     {}
+            PieChartDonutExample     {}
         }
 
         // ── 3D Charts ─────────────────────────────────────────────────────────

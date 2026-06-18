@@ -16,7 +16,19 @@ An interactive example browser showcasing the **Qt Graphs** module (Qt ≥ 6.6).
 | With Range | Colored band between min/max bounds using AreaSeries |
 | Stacked | Multiple area bands stacked with boundary LineSeries |
 | Stacked + Hover | Same as Stacked, with synchronized hover labels across series |
+| Legend Inline | Series legend rendered inside the chart area |
+| Legend Below | Series legend row displayed beneath the chart |
 | Live | Timer-driven sliding window updating every second |
+| Live Editor | Interactive inspector to tweak series and theme properties at runtime |
+
+**Spline Chart**
+
+| Variant | What it shows |
+|---|---|
+| Basic Example | Multi-series smooth-curve chart using SplineSeries with city temperature data |
+| Legend Inline | Same chart with a floating legend overlay inside the chart area |
+| Legend Below | Same chart with a legend row displayed beneath the chart |
+| Live | Timer-driven sliding window updating every second using SplineSeries |
 
 **Area Chart**
 
@@ -37,6 +49,11 @@ An interactive example browser showcasing the **Qt Graphs** module (Qt ≥ 6.6).
 | Stacked | Multiple BarSets stacked using `barsType: BarSeries.BarsType.Stacked` |
 | With Labels | Value labels on each bar using `labelsVisible` and `labelsFormat` |
 | With Target Line | Horizontal target line overlaid on a BarSeries using LineSeries |
+| Stacked 100% | Normalized 100% stacked bars using `BarsType.StackedPercent` |
+| Horizontal | Horizontal bar chart using `BarSeries.BarsOrientation.Horizontal` |
+| Mixed + Line | Bar series with an overlaid LineSeries on a shared axis |
+| Legend Inline | Series legend rendered inside the chart area |
+| Legend Below | Series legend row displayed beneath the chart |
 
 **Scatter Chart**
 
@@ -46,14 +63,48 @@ An interactive example browser showcasing the **Qt Graphs** module (Qt ≥ 6.6).
 | With Trend Line | Linear regression line computed from data and drawn as a LineSeries |
 | Custom Markers | Per-series custom shapes via `pointDelegate` (circle, diamond, cross) |
 | With Hover | Tooltip on hover using HoverHandler inside pointDelegate |
+| Multi Trendlines | Multiple regression lines, one per series |
+| Averages | Horizontal average lines overlaid on each series |
+| Legend Inline | Series legend rendered inside the chart area |
+| Legend Aside | Series legend column displayed beside the chart |
 | Live | Timer-driven scatter plot updating every second |
 
-### 3D Charts
+**Population Pyramid**
 
 | Variant | What it shows |
 |---|---|
-| 3D Bars — Basic | Regional sales per quarter using `Bars3D` and `ItemModelBarDataProxy` |
-| 3D Surface — Basic | Mathematical surface sin(x)·cos(z) using `Surface3D` and `ItemModelSurfaceDataProxy` |
+| Basic Example | Back-to-back horizontal bar chart comparing two populations by age group |
+
+**Heatmap**
+
+| Variant | What it shows |
+|---|---|
+| Basic Example | Pure-QML grid of colored rectangles showing website traffic by hour and day, with a tooltip on each cell and a gradient color legend |
+
+**Pie Chart**
+
+| Variant | What it shows |
+|---|---|
+| Basic Example | PieSeries with labeled PieSlice items showing browser market share data |
+| Donut | Same data rendered as a ring chart using `holeSize: 0.45` on PieSeries |
+
+### 3D Charts
+
+**3D Bars**
+
+| Variant | What it shows |
+|---|---|
+| Basic Example | Regional sales per quarter using `Bars3D` and `ItemModelBarDataProxy` |
+| Legend Inline | Same data with a series legend rendered inside the 3D scene |
+| Legend Below | Same data with a legend row below the 3D view |
+
+**3D Surface**
+
+| Variant | What it shows |
+|---|---|
+| Basic Example | Mathematical surface sin(x)·cos(z) using `Surface3D` and `ItemModelSurfaceDataProxy` |
+| Legend Inline | Same surface with a color-scale legend inside the 3D scene |
+| Legend Aside | Same surface with a legend column beside the 3D view |
 
 ## Requirements
 
@@ -80,19 +131,23 @@ QtGraphsExamples/
 ├── qml/
 │   ├── Main.qml              # App shell (tabs + ChartPage instances)
 │   ├── ChartPage.qml         # Reusable sidebar + chart stack layout
-│   └── 2d/
-│       ├── linechart/
-│       ├── areachart/
-│       ├── barchart/
-│       └── scatterchart/
+│   ├── 2d/
+│   │   ├── linechart/        # basic, table, target, range, stacked, legend, live, editor
+│   │   ├── splinechart/      # basic, legend, live
+│   │   ├── areachart/        # basic, stacked, pointlabels, stackedlabels, live
+│   │   ├── barchart/         # basic, stacked, labels, targetline, stackedpercent, horizontal, mixedline, legend
+│   │   ├── scatterchart/     # basic, trendline, custommarkers, hover, trendlines, averages, legend, live
+│   │   ├── populationpyramid/# basic
+│   │   ├── heatmap/          # basic
+│   │   └── piechart/         # basic, donut
 │   └── 3d/
-│       ├── bars3d/
-│       └── surface3d/
+│       ├── bars3d/           # basic, legend
+│       └── surface3d/        # basic, legend
 ```
 
 Each chart variant lives in its own subfolder and contains:
 - `*Example.qml` — the chart itself
 - `*Description.qml` — description and source file list shown below the chart
-- `*DataProvider.h/.cpp` — C++ QML_ELEMENT exposing data to QML (omitted for pure-QML examples like live charts)
+- `*DataProvider.h/.cpp` — C++ QML_ELEMENT exposing data to QML (omitted for pure-QML examples like live charts and the heatmap)
 
 See `ARCHITECTURE.md` for instructions on adding new examples.

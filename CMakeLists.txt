@@ -61,6 +61,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/scatterchart/legend/ScatterChartLegendDataProvider.cpp
         qml/2d/splinechart/basic/SplineChartBasicDataProvider.h
         qml/2d/splinechart/basic/SplineChartBasicDataProvider.cpp
+        qml/2d/splinechart/legend/SplineChartLegendDataProvider.h
+        qml/2d/splinechart/legend/SplineChartLegendDataProvider.cpp
         qml/2d/populationpyramid/basic/PopulationPyramidDataProvider.h
         qml/2d/populationpyramid/basic/PopulationPyramidDataProvider.cpp
         qml/2d/barchart/stackedpercent/BarChartStackedPercentDataProvider.h
@@ -159,6 +161,12 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/scatterchart/legend/ScatterChartSideLegendDescription.qml
         qml/2d/splinechart/basic/SplineChartBasicExample.qml
         qml/2d/splinechart/basic/SplineChartBasicDescription.qml
+        qml/2d/splinechart/legend/SplineChartInlineLegendExample.qml
+        qml/2d/splinechart/legend/SplineChartInlineLegendDescription.qml
+        qml/2d/splinechart/legend/SplineChartSideLegendExample.qml
+        qml/2d/splinechart/legend/SplineChartSideLegendDescription.qml
+        qml/2d/splinechart/live/LiveSplineChartExample.qml
+        qml/2d/splinechart/live/LiveSplineChartDescription.qml
         qml/2d/populationpyramid/basic/PopulationPyramidExample.qml
         qml/2d/populationpyramid/basic/PopulationPyramidDescription.qml
         qml/2d/heatmap/basic/HeatmapExample.qml
@@ -175,6 +183,8 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/scatterchart/averages/ScatterChartAveragesDescription.qml
         qml/2d/piechart/basic/PieChartBasicExample.qml
         qml/2d/piechart/basic/PieChartBasicDescription.qml
+        qml/2d/piechart/donut/PieChartDonutExample.qml
+        qml/2d/piechart/donut/PieChartDonutDescription.qml
         # ── 3D ──────────────────────────────────────────────────
         qml/3d/bars3d/basic/Bars3DBasicExample.qml
         qml/3d/bars3d/basic/Bars3DBasicDescription.qml
@@ -213,6 +223,7 @@ target_include_directories(QtGraphsExamples PRIVATE
     qml/2d/scatterchart/hover
     qml/2d/scatterchart/legend
     qml/2d/splinechart/basic
+    qml/2d/splinechart/legend
     qml/2d/populationpyramid/basic
     qml/2d/barchart/stackedpercent
     qml/2d/barchart/horizontal
