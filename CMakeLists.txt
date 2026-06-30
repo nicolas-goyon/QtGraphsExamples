@@ -173,6 +173,16 @@ qt_add_qml_module(QtGraphsExamples
         qml/2d/populationpyramid/basic/PopulationPyramidDescription.qml
         qml/2d/heatmap/basic/HeatmapExample.qml
         qml/2d/heatmap/basic/HeatmapDescription.qml
+        qml/2d/flowchart/basic/FlowChartExample.qml
+        qml/2d/flowchart/basic/FlowChartDescription.qml
+        qml/2d/flowchart/multilayer/FlowChartMultiLayerExample.qml
+        qml/2d/flowchart/multilayer/FlowChartMultiLayerDescription.qml
+        qml/2d/flowchart/hover/FlowChartHoverExample.qml
+        qml/2d/flowchart/hover/FlowChartHoverDescription.qml
+        qml/2d/flowchart/topdown/FlowChartTopDownExample.qml
+        qml/2d/flowchart/topdown/FlowChartTopDownDescription.qml
+        qml/2d/flowchart/partial/FlowChartPartialExample.qml
+        qml/2d/flowchart/partial/FlowChartPartialDescription.qml
         qml/2d/barchart/stackedpercent/BarChartStackedPercentExample.qml
         qml/2d/barchart/stackedpercent/BarChartStackedPercentDescription.qml
         qml/2d/barchart/horizontal/BarChartHorizontalExample.qml

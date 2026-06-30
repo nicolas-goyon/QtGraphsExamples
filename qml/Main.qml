@@ -61,6 +61,7 @@ ApplicationWindow {
                 { label: "Scatter Chart",      variants: ["Basic Example", "With Trend Line", "Custom Markers", "With Hover", "Multi Trendlines", "Averages", "Legend Inline", "Legend Aside", "Live"] },
                 { label: "Population Pyramid", variants: ["Basic Example"] },
                 { label: "Heatmap",            variants: ["Basic Example"] },
+                { label: "Flow Diagram",       variants: ["CO₂ / Energy", "Multi-Layer", "With Hover", "Top-Down", "Partial Layer"] },
                 { label: "Pie Chart",          variants: ["Basic Example", "Donut"] },
                 { label: "Radar Chart",        variants: ["Basic Example", "Multi-Series", "Legend Inline", "Legend Below"] }
             ]
@@ -104,6 +105,11 @@ ApplicationWindow {
             LiveScatterChartExample           {}
             PopulationPyramidExample {}
             HeatmapExample           {}
+            FlowChartExample         {}
+            FlowChartMultiLayerExample {}
+            FlowChartHoverExample      {}
+            FlowChartTopDownExample    {}
+            FlowChartPartialExample    {}
             PieChartBasicExample     {}
             PieChartDonutExample     {}
             RadarChartBasicExample          {}

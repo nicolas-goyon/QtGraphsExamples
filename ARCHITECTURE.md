@@ -28,6 +28,7 @@ qml/
 │   ├── scatterchart/     # basic, trendline, custommarkers, hover, trendlines, averages, legend, live
 │   ├── populationpyramid/# basic
 │   ├── heatmap/          # basic
+│   ├── flowchart/        # basic, multilayer, hover, topdown, partial (pure-QML Canvas Sankey / flow diagram)
 │   ├── piechart/         # basic, donut
 │   └── radarchart/
 │       ├── RadarChart.qml          # Shared reusable Canvas component
@@ -269,6 +270,7 @@ When Qt Graphs has no series type for the chart you want to implement (as is the
 
 - **Heatmap** — `Repeater` of `Rectangle`s inside a `Column`/`Row` grid. No `GraphsView` needed.
 - **Radar chart** — `Canvas` item using the Qt Quick 2D Canvas API. The component lives in `qml/2d/radarchart/RadarChart.qml` and is shared across all radar variants.
+- **Flow / Sankey diagram** — `Canvas` item using the Qt Quick 2D Canvas API. Node bars are filled rectangles; flows are filled cubic-bezier ribbons. The example lives in `qml/2d/flowchart/basic/FlowChartExample.qml` (self-contained, not shared).
 
 For shared components like `RadarChart.qml`, place them at the chart-type root level (e.g. `qml/2d/radarchart/`) rather than inside a variant subfolder. Register them in `CMakeLists.txt` `QML_FILES` as usual — they become available as QML types automatically via `QTP0004`.
 
@@ -328,6 +330,18 @@ RadarChart {
     ]
 }
 ```
+
+**Flow / Sankey diagram (pure QML Canvas)** — Qt Graphs has no flow / Sankey series type. The flow chart examples draw directly on a 2D `Canvas`. Node bars are filled rectangles whose height is proportional to value; flows are filled cubic-bezier ribbons whose thickness equals the flow value, built with two `bezierCurveTo` edges sharing a control x at the midpoint. A single `scale` factor (pixels per unit) is shared across columns so segments meet flush. The data must conserve — every node's inflow must equal its outflow (and overall `sum(inputs) == sum(outputs)`) — otherwise ribbons will not tile a node's edges evenly. The canvas redraws on resize via `onWidthChanged`/`onHeightChanged` calling `requestPaint()`. No `GraphsView` or data provider is needed.
+
+There are three variants:
+
+- **basic** — a fixed two-stage layout (inputs → one central node → outputs).
+- **multilayer** — a generic, data-driven layered graph. Nodes are declared with a `layer` index and links as `{ source, target, value }`. The renderer computes each node's in/out totals, sizes the bar by `max(in, out)`, lays out one column per layer, and stacks each node's links along its edges — ordered by the opposite endpoint's centre `y` to reduce crossings. This is what lets inputs enter mid-graph and outputs leave before the final column.
+- **hover** — the multilayer renderer plus a `MouseArea` (`acceptedButtons: Qt.NoButton`, `hoverEnabled: true`) that hit-tests nodes and flows on `onPositionChanged`, dims non-hovered ribbons via per-flow alpha in `onPaint`, and positions a floating tooltip `Rectangle`. Node hit-testing is a rectangle bounds check; **flow hit-testing** solves the ribbon's cubic `x(t) = cursorX` with a 24-step binary search (x is monotonic because both control points share the midpoint x), then tests whether the cursor's y lies between the band's top-edge `y(t)` and bottom-edge `y(t)`.
+- **topdown** — the same layered model with the x and y axes swapped: layers run top to bottom, node bars are horizontal (width ∝ value), and `ribbonV()` draws downward ribbons (control points share the midpoint y). Good for funnels and process flows read top-down.
+- **partial** — demonstrates a partial intermediate layer. Because the generic renderer lets a link connect any two layers (not only adjacent ones), a node placed in an intermediate layer only affects the flows whose links touch it; the rest become "skip-links" that span across (here `target.layer - source.layer > 1`). Ribbons are drawn before nodes so skip-links pass *behind* the partial node. Skip-links are drawn slightly lighter to distinguish them.
+
+A practical caveat for all variants: keep every node balanced (`inflow == outflow` for non-source/sink nodes). The bar height is `max(inflow, outflow)`, so an unbalanced node leaves an unfilled gap on its smaller edge and the ribbons stop tiling cleanly.
 
 **ItemModelBarDataProxy with multiple series** — each `Bar3DSeries` needs both `rowRole` and `columnRole` set. Without `columnRole`, the proxy cannot build a valid `QBarDataArray` and emits a data-format warning with no bars rendered. When the model has no natural column field, use `columnRolePattern` / `columnRoleReplace` to map all items to a single constant column category:
 

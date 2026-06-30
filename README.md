@@ -108,6 +108,18 @@ read, understood, and used as a starting point.
 
 > **Note:** Qt Graphs has no built-in heatmap series — this example is implemented entirely in QML using a `Repeater` of `Rectangle`s, with no `GraphsView` needed.
 
+### Flow Diagram
+
+| Variant | What it shows |
+|---|---|
+| CO₂ / Energy | Pure-QML Sankey flow diagram: primary-energy inputs flow into a central system node, then split into end-use outputs, with conserved totals (sum of inputs = sum of outputs) |
+| Multi-Layer | Data-driven layered Sankey where nodes carry a layer index — inputs can enter mid-graph (Solar & Wind at layer 1) and outputs can leave early (Conversion Losses at layer 2) |
+| With Hover | The multi-layer flow with cursor hit-testing: hovering a node or flow highlights it, dims the rest, and shows a floating tooltip with the exact value |
+| Top-Down | The layered renderer rotated to a vertical orientation — a web conversion funnel flowing top to bottom, with visitors leaving as sink nodes at each stage |
+| Partial Layer | A monthly cashflow where a Tax layer routes only earned income; Investments and Gift skip it via links that span two layers at once |
+
+> **Note:** Qt Graphs has no flow / Sankey series. The diagrams are drawn with the Qt Quick 2D `Canvas` API — node bars as filled rectangles and flows as filled cubic-bezier ribbons whose thickness equals the flow value. No `GraphsView` needed.
+
 ### Pie Chart
 
 | Variant | What it shows |
@@ -192,6 +204,7 @@ QtGraphsExamples/
 │   │   ├── scatterchart/     # basic · trendline · custommarkers · hover · trendlines · averages · legend · live
 │   │   ├── populationpyramid/# basic
 │   │   ├── heatmap/          # basic
+│   │   ├── flowchart/        # basic · multilayer · hover · topdown · partial (pure-QML Canvas Sankey)
 │   │   ├── piechart/         # basic · donut
 │   │   └── radarchart/       # RadarChart.qml (shared) · basic · multiline · legend
 │   └── 3d/
